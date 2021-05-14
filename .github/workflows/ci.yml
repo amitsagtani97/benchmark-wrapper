@@ -20,15 +20,5 @@ jobs:
       - name: Install benchmark-wrapper
         run: |
           python setup.py develop
-    name: Install and setup minikube
-    steps:
-      - name: start minikube
-        id: minikube
-        uses: medyagh/setup-minikube@master
-      - name: Install podman
-        run: |
-          sudo apt-get -y install podman
-      - name: Try the cluster
-        run: |
-          kubectl get namespaces
+
 

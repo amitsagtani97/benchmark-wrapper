@@ -1,0 +1,20 @@
+name: Run benchmarks
+
+on:
+  - push
+  - pull_request
+
+jobs:
+  benchmark-ci:
+    runs-on: ubuntu-latest
+    name: Install and setup minikube
+    steps:
+      - name: start minikube
+        id: minikube
+        uses: medyagh/setup-minikube@master
+      - name: Install podman
+        run: |
+          sudo apt-get -y install podman
+      - name: Try the cluster
+        run: |
+          kubectl get namespaces
