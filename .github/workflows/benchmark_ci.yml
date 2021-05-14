@@ -9,6 +9,12 @@ jobs:
     runs-on: ubuntu-latest
     name: Install and setup minikube
     steps:
+      - name: Check out source repository
+        uses: actions/checkout@v2
+      - name: Set up Python environment
+        uses: actions/setup-python@v1
+        with:
+          python-version: "3.8"
       - name: start minikube
         id: minikube
         uses: medyagh/setup-minikube@master
@@ -18,3 +24,5 @@ jobs:
       - name: Try the cluster
         run: |
           kubectl get namespaces
+          export ES_SERVER="https://search-perfscale-dev-chmf5l4sh66lvxbnadi4bznl3a.us-west-2.es.amazonaws.com:443"
+          ci/run_ci.sh $TESTS
