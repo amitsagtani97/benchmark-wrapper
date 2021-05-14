@@ -25,4 +25,4 @@ jobs:
         run: |
           kubectl get namespaces
           export ES_SERVER="https://search-perfscale-dev-chmf5l4sh66lvxbnadi4bznl3a.us-west-2.es.amazonaws.com:443"
-          ci/run_ci.sh $TESTS
+          sudo bash ci/run_ci.sh
